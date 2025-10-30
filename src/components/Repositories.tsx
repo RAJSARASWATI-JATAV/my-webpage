@@ -1,6 +1,8 @@
-import { Bot, Bomb, Smartphone, Sparkles, MessageSquare, Shield } from 'lucide-react'
+import { useState } from 'react'
+import { Bot, Bomb, Smartphone, Sparkles, MessageSquare, Shield, Star } from 'lucide-react'
 
 export default function Repositories() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const repositories = [
     {
       name: 'Insta-Bot',
@@ -41,33 +43,58 @@ export default function Repositories() {
   ]
 
   return (
-    <section className="py-20 px-4 bg-background-secondary/30">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="heading-lg text-neon-green text-center mb-4">
-          🏴‍☠️ POPULAR REPOSITORIES
-        </h2>
+    <section className="py-20 px-4 bg-background-secondary/30 relative overflow-hidden">
+      {/* Animated grid background */}
+      <div className="absolute inset-0 circuit-bg opacity-10"></div>
+      
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="flex items-center justify-center gap-4 mb-4">
+          <Star className="text-neon-green animate-pulse" size={40} />
+          <h2 className="heading-lg text-neon-green text-center animate-pulse-neon text-shadow-neon">
+            🏴‍☠️ POPULAR REPOSITORIES
+          </h2>
+          <Star className="text-neon-green animate-pulse" size={40} />
+        </div>
         <p className="text-terminal text-text-secondary text-center mb-12">
           All tools are for ethical hacking, educational research, and fun. I am not responsible for any misuse.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {repositories.map((repo, index) => {
             const Icon = repo.icon
+            const isHovered = hoveredIndex === index
             return (
               <div
                 key={index}
-                className="border-2 border-neon-cyan bg-background-secondary/80 backdrop-blur-sm p-6 neon-glow-hover transition-all duration-300 hover:scale-105 hover:border-neon-green animate-fade-in"
+                className="border-2 border-neon-cyan bg-background-secondary/80 backdrop-blur-sm p-6 neon-glow-hover transition-all duration-300 hover:scale-110 hover:border-neon-green animate-fade-in scanline relative overflow-hidden tilt-3d"
                 style={{ animationDelay: `${index * 0.1}s` }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className="flex items-start gap-4 mb-4">
-                  <Icon className={repo.color} size={32} />
-                  <h3 className="text-terminal font-bold text-neon-cyan flex-1">{repo.name}</h3>
+                {/* Corner decorations */}
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-neon-green"></div>
+                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-neon-green"></div>
+                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-neon-green"></div>
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-neon-green"></div>
+
+                <div className="flex items-start gap-4 mb-4 relative z-10">
+                  <Icon className={`${repo.color} ${isHovered ? 'animate-pulse-neon' : ''} transition-all duration-300`} size={32} />
+                  <h3 className={`text-terminal font-bold text-neon-cyan flex-1 ${isHovered ? 'text-shadow-glow' : ''}`}>
+                    {repo.name}
+                  </h3>
                 </div>
-                <p className="text-terminal text-text-secondary text-sm leading-relaxed">
+                <p className="text-terminal text-text-secondary text-sm leading-relaxed relative z-10">
                   {repo.description}
                 </p>
-                <div className="mt-4 pt-4 border-t border-neon-cyan/30">
-                  <span className="text-terminal text-neon-green text-xs">$ git clone repo</span>
+                <div className="mt-4 pt-4 border-t border-neon-cyan/30 relative z-10">
+                  <span className={`text-terminal text-neon-green text-xs ${isHovered ? 'animate-pulse-neon' : ''}`}>
+                    $ git clone repo
+                  </span>
                 </div>
+
+                {/* Hover overlay effect */}
+                {isHovered && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/10 via-transparent to-neon-green/10 animate-pulse pointer-events-none"></div>
+                )}
               </div>
             )
           })}
