@@ -141,6 +141,18 @@
   animation: matrix-text 4s steps(30) infinite;
 }
 
+@utility animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+@utility animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@utility animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
 /* Keyframes */
 @keyframes glitch {
   0%, 100% {
@@ -549,6 +561,33 @@ html {
   }
   100% {
     background-position: 50px 50px;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 10px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px currentColor) drop-shadow(0 0 30px currentColor) drop-shadow(0 0 40px currentColor);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
   }
 }
 

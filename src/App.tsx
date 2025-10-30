@@ -15,26 +15,64 @@ import SkillsRadar from './components/SkillsRadar'
 import CyberMap from './components/CyberMap'
 import DNAHelix from './components/DNAHelix'
 import EnhancedRepositories from './components/EnhancedRepositories'
+import AuroraBackground from './components/AuroraBackground'
+import ThemeSwitcher from './components/ThemeSwitcher'
+import ActivityHeatmap from './components/ActivityHeatmap'
+import ProgressRings from './components/ProgressRings'
+import NetworkGraph from './components/NetworkGraph'
+import MouseTrail from './components/MouseTrail'
+import ParallaxSection from './components/ParallaxSection'
 
 function App() {
   return (
     <div className="relative min-h-screen bg-background-primary overflow-x-hidden">
+      {/* Background Effects */}
+      <AuroraBackground />
       <MatrixRain />
       <ParticleField />
       <DNAHelix />
+      <MouseTrail />
+      
+      {/* Theme Switcher */}
+      <ThemeSwitcher />
+      
+      {/* Main Content */}
       <div className="relative z-10">
         <HeroSection />
         <SystemWarning />
-        <HackingSimulator />
+        
+        <ParallaxSection speed={-0.3}>
+          <HackingSimulator />
+        </ParallaxSection>
+        
         <CommandTerminal />
-        <AboutSection />
+        
+        <ParallaxSection speed={0.2}>
+          <AboutSection />
+        </ParallaxSection>
+        
         <ThreatMatrix />
-        <CyberMap />
+        
+        <ParallaxSection speed={-0.2}>
+          <CyberMap />
+        </ParallaxSection>
+        
         <AchievementBadges />
-        <SkillsRadar />
+        <ProgressRings />
+        
+        <ParallaxSection speed={0.3}>
+          <SkillsRadar />
+        </ParallaxSection>
+        
+        <NetworkGraph />
         <TechStack />
+        <ActivityHeatmap />
         <StatsCounter />
-        <EnhancedRepositories />
+        
+        <ParallaxSection speed={-0.1}>
+          <EnhancedRepositories />
+        </ParallaxSection>
+        
         <OperationStatus />
         <ContactFooter />
       </div>

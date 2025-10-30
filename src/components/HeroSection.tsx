@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Skull, Code2, Shield, Zap } from 'lucide-react'
+import { motion } from 'framer-motion'
+import GlassmorphicCard from './GlassmorphicCard'
 
 export default function HeroSection() {
   const [typedText, setTypedText] = useState('')
@@ -43,37 +45,55 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="mb-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-6"
+        >
           <h1 className="heading-hero text-neon-green animate-glitch-intense mb-4 text-shadow-neon">
             ☠️ RAJSARASWATI JATAV ☠️
           </h1>
-          <div className="flex items-center justify-center gap-4 mb-4 scanline p-4 bg-background-secondary/50 backdrop-blur-sm border-2 border-neon-cyan">
-            <Code2 className="text-neon-cyan animate-pulse" size={32} />
-            <p className="heading-lg text-neon-cyan text-shadow-glow font-mono">
-              {typedText}
-              <span className="inline-block w-3 h-6 bg-neon-cyan ml-2 animate-pulse"></span>
-            </p>
-            <Shield className="text-neon-cyan animate-pulse" size={32} />
-          </div>
-        </div>
+          <GlassmorphicCard className="inline-block">
+            <div className="flex items-center justify-center gap-4 scanline p-4">
+              <Code2 className="text-neon-cyan animate-pulse" size={32} />
+              <p className="heading-lg text-neon-cyan text-shadow-glow font-mono">
+                {typedText}
+                <span className="inline-block w-3 h-6 bg-neon-cyan ml-2 animate-pulse"></span>
+              </p>
+              <Shield className="text-neon-cyan animate-pulse" size={32} />
+            </div>
+          </GlassmorphicCard>
+        </motion.div>
 
-        <div className="mb-8">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="mb-8"
+        >
           <p className="text-code text-text-primary mb-2">🎯 FOCUSING</p>
           <p className="heading-md text-terminal-green mb-6">ᚚ 𝚭𝚯𝐑𝚱</p>
-        </div>
+        </motion.div>
 
-        <div className="max-w-3xl mx-auto mb-8">
+        <GlassmorphicCard className="max-w-3xl mx-auto mb-8" delay={0.7}>
           <h2 className="heading-lg text-neon-cyan mb-4">Code Artist & Cyber Innovator</h2>
           <p className="text-code text-text-secondary leading-relaxed">
             Passionate <span className="text-neon-green">Ethical Hacker</span>, <span className="text-neon-cyan">Cyberpunk OSINT Specialist</span>, and <span className="text-accent-purple">Python3 Automation Architect</span>. Based in India, creating next-level solutions with deep focus on security, automation, and creative open-source coding.
           </p>
-        </div>
+        </GlassmorphicCard>
 
-        <div className="inline-block px-8 py-4 border-2 border-neon-green bg-background-secondary/50 backdrop-blur-sm neon-glow-hover gradient-border scanline">
-          <p className="text-terminal text-neon-green animate-pulse-neon text-shadow-glow">
-            &gt; Transforming digital boundaries with unstoppable power & ethical coding.
-          </p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
+        >
+          <GlassmorphicCard className="inline-block gradient-border scanline">
+            <p className="text-terminal text-neon-green animate-pulse-neon text-shadow-glow px-8 py-4">
+              &gt; Transforming digital boundaries with unstoppable power & ethical coding.
+            </p>
+          </GlassmorphicCard>
+        </motion.div>
 
         {/* Floating icons */}
         <div className="mt-12 flex justify-center gap-8">
