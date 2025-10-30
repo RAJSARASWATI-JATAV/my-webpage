@@ -18,6 +18,9 @@ dist-ssr
 # Netlify
 .netlify
 
+# TypeScript
+*.tsbuildinfo
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useMemo } from 'react'
 import { Target } from 'lucide-react'
 
 interface Skill {
@@ -10,14 +10,14 @@ interface Skill {
 export default function SkillsRadar() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  const skills: Skill[] = [
+  const skills: Skill[] = useMemo(() => [
     { name: 'Python', level: 95, color: '#00ff41' },
     { name: 'Cybersecurity', level: 98, color: '#00ffff' },
     { name: 'Penetration Testing', level: 92, color: '#b000ff' },
     { name: 'Network Security', level: 90, color: '#ff0040' },
     { name: 'OSINT', level: 96, color: '#ffff00' },
     { name: 'Automation', level: 94, color: '#33ff33' },
-  ]
+  ], [])
 
   useEffect(() => {
     const canvas = canvasRef.current

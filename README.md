@@ -1,15 +1,17 @@
 # ☠️ RAJSARASWATI JATAV | Legendary Cyber Portfolio
 
-[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://my-webpage-podfqoryf-rajsaraswati-jatavs-projects.vercel.app)
+[![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?style=for-the-badge&logo=vercel)](https://my-webpage-podfqoryf-rajsaraswati-jatavs-projects.vercel.app)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
+[![Tailwind](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
+[![Build](https://img.shields.io/badge/Build-Passing-success?style=for-the-badge)]()
+[![Lint](https://img.shields.io/badge/Lint-Passing-success?style=for-the-badge)]()
 
-A **LEGENDARY** next-generation cyberpunk-themed portfolio showcasing cutting-edge web technologies, advanced animations, and interactive visualizations for ethical hacker and cybersecurity professional RAJSARASWATI JATAV.
+A **LEGENDARY** next-generation cyberpunk portfolio with cutting-edge animations, interactive visualizations, and glassmorphic design.
 
 ## 🌐 Live Demo
 
-**🚀 [View Live Portfolio](https://my-webpage-podfqoryf-rajsaraswati-jatavs-projects.vercel.app)**
+**🚀 [View Live](https://my-webpage-podfqoryf-rajsaraswati-jatavs-projects.vercel.app)**
 
 ---
 
@@ -84,38 +86,34 @@ A **LEGENDARY** next-generation cyberpunk-themed portfolio showcasing cutting-ed
 
 ---
 
-## 📦 Installation
-
-### Prerequisites
-- Node.js 18+ installed
-- npm or yarn package manager
-
-### Setup
+## 📦 Quick Start
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd my-pc
-
 # Install dependencies
 npm install
 
-# Start development server
+# Development
 npm run dev
+
+# Build
+npm run build
+
+# Lint
+npm run lint
 ```
 
-Open your browser and navigate to `http://localhost:5173`
+Open http://localhost:5173
 
 ---
 
-## 🏗️ Building for Production
+## 🚀 Deploy
 
 ```bash
-# Build optimized production bundle
-npm run build
+# Vercel (Auto-deploys on push to main)
+vercel --prod
 
-# Preview production build locally
-npm run preview
+# Or push to GitHub
+git push origin main
 ```
 
 ---

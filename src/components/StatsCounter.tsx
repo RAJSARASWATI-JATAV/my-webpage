@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { GitBranch, Users, Code, Award } from 'lucide-react'
 
 interface Stat {
@@ -12,12 +12,12 @@ interface Stat {
 export default function StatsCounter() {
   const [counts, setCounts] = useState([0, 0, 0, 0])
 
-  const stats: Stat[] = [
+  const stats: Stat[] = useMemo(() => [
     { icon: GitBranch, label: 'Repositories', value: 50, suffix: '+', color: 'text-neon-green' },
     { icon: Code, label: 'Contributions', value: 200, suffix: '+', color: 'text-neon-cyan' },
     { icon: Users, label: 'Followers', value: 1000, suffix: '+', color: 'text-accent-purple' },
     { icon: Award, label: 'Projects', value: 30, suffix: '+', color: 'text-warning-yellow' },
-  ]
+  ], [])
 
   useEffect(() => {
     const duration = 2000
@@ -41,7 +41,7 @@ export default function StatsCounter() {
         })
       }, interval)
     })
-  }, [])
+  }, [stats])
 
   return (
     <section className="py-20 px-4">
