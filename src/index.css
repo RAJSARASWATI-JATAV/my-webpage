@@ -125,6 +125,22 @@
   animation: lightning 0.5s ease-in-out infinite;
 }
 
+@utility animate-holographic {
+  animation: holographic 3s ease-in-out infinite;
+}
+
+@utility animate-data-stream {
+  animation: data-stream 2s linear infinite;
+}
+
+@utility animate-cyber-pulse {
+  animation: cyber-pulse 1.5s ease-in-out infinite;
+}
+
+@utility animate-matrix-text {
+  animation: matrix-text 4s steps(30) infinite;
+}
+
 /* Keyframes */
 @keyframes glitch {
   0%, 100% {
@@ -299,6 +315,64 @@
   }
 }
 
+@keyframes holographic {
+  0%, 100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  25% {
+    filter: hue-rotate(90deg) brightness(1.2);
+  }
+  50% {
+    filter: hue-rotate(180deg) brightness(1);
+  }
+  75% {
+    filter: hue-rotate(270deg) brightness(1.2);
+  }
+}
+
+@keyframes data-stream {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes cyber-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes matrix-text {
+  0% {
+    content: '01001000 01000001 01000011 01001011';
+  }
+  25% {
+    content: '01000101 01010010 00100000 01010011';
+  }
+  50% {
+    content: '01011001 01010011 01010100 01000101';
+  }
+  75% {
+    content: '01001101 00100000 01000010 01010010';
+  }
+  100% {
+    content: '01000101 01000001 01000011 01001000';
+  }
+}
+
 /* Global Styles */
 * {
   margin: 0;
@@ -427,5 +501,121 @@ html {
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     animation: rotate-slow 4s linear infinite;
+  }
+}
+
+/* Holographic Effect */
+@utility holographic-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 65, 0.1) 0%,
+    rgba(0, 255, 255, 0.1) 25%,
+    rgba(176, 0, 255, 0.1) 50%,
+    rgba(255, 0, 64, 0.1) 75%,
+    rgba(0, 255, 65, 0.1) 100%
+  );
+  background-size: 400% 400%;
+  animation: holographic 6s ease infinite;
+}
+
+/* Data Stream Effect */
+@utility data-stream {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    animation: data-stream 2s linear infinite;
+  }
+}
+
+/* Cyber Grid */
+@utility cyber-grid {
+  background-image: 
+    linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: cyber-grid-move 20s linear infinite;
+}
+
+@keyframes cyber-grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Glitch Text */
+@utility glitch-text {
+  position: relative;
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--neon-cyan);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  }
+  &::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--warning-red);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+  }
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(61px, 9999px, 90px, 0);
+  }
+  20% {
+    clip: rect(89px, 9999px, 23px, 0);
+  }
+  40% {
+    clip: rect(43px, 9999px, 78px, 0);
+  }
+  60% {
+    clip: rect(12px, 9999px, 56px, 0);
+  }
+  80% {
+    clip: rect(78px, 9999px, 34px, 0);
+  }
+  100% {
+    clip: rect(34px, 9999px, 67px, 0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip: rect(12px, 9999px, 67px, 0);
+  }
+  20% {
+    clip: rect(78px, 9999px, 34px, 0);
+  }
+  40% {
+    clip: rect(34px, 9999px, 89px, 0);
+  }
+  60% {
+    clip: rect(56px, 9999px, 23px, 0);
+  }
+  80% {
+    clip: rect(23px, 9999px, 90px, 0);
+  }
+  100% {
+    clip: rect(90px, 9999px, 12px, 0);
   }
 }
